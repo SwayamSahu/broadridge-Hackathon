@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Scraping Website</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .result {
+            margin-top: 20px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        
+        .result table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .result th,
+        .result td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WEB HARVEST- A Data Scraping Tool</h1>
+        <div class="form-group">
+            <label for="url">Website URL:</label>
+            <input type="text" id="url" placeholder="Enter the website URL">
+        </div>
+        <div class="form-group">
+            <button onclick="scrapeData()">Scrape Data</button>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+    
+    <script>
+        function scrapeData() {
+            var urlInput = document.getElementById("url");
+            var url = urlInput.value;
+            
+            // Perform data scraping logic here
+            // You can use libraries like Puppeteer, Cheerio, or any other of your choice
+            
+            // Example result
+            var resultDiv = document.getElementById("result");
+            var table = document.createElement("table");
+            var headerRow = document.createElement("tr");
+            var header1 = document.createElement("th");
+            header1.textContent = "Name";
+            var header2 = document.createElement("th");
+            header2.textContent = "Email";
+            headerRow.appendChild(header1);
+            headerRow.appendChild(header2);
+            table.appendChild(headerRow);
+            
+            // Sample data
+            var data = [
+                { name: "John Doe", email: "john@example.com" },
+                { name: "Jane Smith", email: "jane@example.com" },
+                { name: "Mike Johnson", email: "mike@example.com" }
+            ];
+            
+            for (var i = 0; i < data.length; i++) {
+                var row = document.createElement("tr");
+                var cell1 = document.createElement("td");
+                cell1.textContent = data[i].name;
+                var cell2 = document.createElement("td");
+                cell2.textContent = data[i].email;
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                table.appendChild(row);
+            }
+            
+            resultDiv.innerHTML = "";
+            resultDiv.appendChild(table);
+        }
+    </script>
+</body>
+</html>
